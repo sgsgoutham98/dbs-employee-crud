@@ -16,7 +16,6 @@ public class EmpManangementClient {
         saveEmployees();
         listAllEmployees();
         fetchEmployeeDetailsById(12);
-
     }
 
     private static void fetchEmployeeDetailsById(int i) {
@@ -24,7 +23,7 @@ public class EmpManangementClient {
     }
 
     private static void listAllEmployees() {
-        employeeController.listAll().forEach(employee -> System.out.println(employee));
+        employeeController.listAll().forEach(System.out::println);
     }
 
 
