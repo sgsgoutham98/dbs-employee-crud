@@ -13,20 +13,21 @@ public class Employee implements Serializable, Comparable<Employee> {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "dept_name")
+    @Column(name = "emp_name")
     private String name;
 
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
-    @Column()
+    @Column(name = "department_name")
     private String departmentName;
 
     public Employee(){}
 
-    public Employee( String name, LocalDate dateOfBirth) {
+    public Employee( String name, LocalDate dateOfBirth, String departmentName) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
+        this.departmentName = departmentName;
     }
 
     public void setId(long id ){

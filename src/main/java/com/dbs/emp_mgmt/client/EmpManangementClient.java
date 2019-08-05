@@ -29,11 +29,11 @@ public class EmpManangementClient {
 
 
     private static void saveEmployees(){
-        Employee employee = new Employee("Harish", LocalDate.of(1985,5, 25));
+        Employee employee = new Employee("Harish", LocalDate.of(1985,5, 25), "HR");
         employeeController.saveEmployee(employee);
-        employee = new Employee("VInayak", LocalDate.of(1985,6, 18));
+        employee = new Employee("VInayak", LocalDate.of(1985,6, 18), "Payroll");
         employeeController.saveEmployee(employee);
-        employee = new Employee("Harish", LocalDate.of(1981,3, 25));
+        employee = new Employee("Harish", LocalDate.of(1981,3, 25), "HR");
         employeeController.saveEmployee(employee);
     }
 }
