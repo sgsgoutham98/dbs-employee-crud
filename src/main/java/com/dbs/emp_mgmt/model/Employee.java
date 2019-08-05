@@ -1,20 +1,36 @@
 package com.dbs.emp_mgmt.model;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+@Entity
+@Table(name = "Employee")
 public class Employee implements Serializable, Comparable<Employee> {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @Column(name = "dept_name")
     private String name;
+
+    @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
+
+    @Column()
     private String departmentName;
 
-    public Employee(long id, String name, LocalDate dateOfBirth) {
-        this.id = id;
+    public Employee(){}
+
+    public Employee( String name, LocalDate dateOfBirth) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setId(long id ){
+        this.id = id;
     }
 
     public long getId() {

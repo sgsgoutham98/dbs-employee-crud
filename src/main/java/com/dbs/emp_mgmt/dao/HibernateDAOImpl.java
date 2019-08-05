@@ -4,7 +4,6 @@ import com.dbs.emp_mgmt.model.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,16 +28,19 @@ public class HibernateDAOImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> findAll() {
-        return null;
+        Session currentSession = sessionFactory.getCurrentSession();
+        return currentSession.createQuery("from Employee").list();
     }
 
     @Override
     public Employee findById(long id) {
-        return null;
+        return sessionFactory.getCurrentSession().get(Employee.class, id);
     }
 
     @Override
     public void deleteEmployee(long id) {
-
+        Session session = sessionFactory.getCurrentSession();
+        Employee employee = session.byId(Employee.class).load(id);
+        session.delete(employee);
     }
 }

@@ -33,7 +33,7 @@ public class H2EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> findAll() {
-        List<Employee> employees = this.jdbcTemplate.query("select * from employee", (resultSet, i) -> new Employee(resultSet.getInt(1), null , null));
+        List<Employee> employees = this.jdbcTemplate.query("select * from employee", (resultSet, i) -> new Employee( null , null));
         return employees;
     }
 
