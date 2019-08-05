@@ -2,11 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
     <context:component-scan base-package="com.dbs.emp_mgmt" />
 
@@ -22,5 +22,28 @@
         <constructor-arg name="password" value=""/>
         <property name="driverClassName" value="org.h2.Driver"/>
     </bean>
+
+    <jdbc:embedded-database id="emp_db" type="H2">
+        <jdbc:script location="classpath:schema.sql"/>
+        <jdbc:script location="classpath:data.sql"/>
+    </jdbc:embedded-database>
+
+    <bean depends-on="emp_db"
+          class="org.springframework.beans.factory.config.MethodInvokingBean">
+        <property name="targetClass"
+                  value="org.hsqldb.util.DatabaseManagerSwing" />
+        <property name="targetMethod" value="main" />
+        <property name="arguments">
+            <list>
+                <value>--url</value>
+                <value>jdbc:h2:mem:emp_db</value>
+                <value>--user</value>
+                <value>sa</value>
+                <value>--password</value>
+                <value></value>
+            </list>
+        </property>
+    </bean>
+
 
 </beans>

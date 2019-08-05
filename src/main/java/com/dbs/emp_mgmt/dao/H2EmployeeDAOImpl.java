@@ -3,8 +3,11 @@ package com.dbs.emp_mgmt.dao;
 import com.dbs.emp_mgmt.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 @Repository("h2Dao")
@@ -19,7 +22,7 @@ public class H2EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public Employee save(Employee employee) {
-        this.jdbcTemplate.execute("insert into employee (id) values ('"+employee.getId()+" )");
+        this.jdbcTemplate.execute("insert into employee (id) values ("+employee.getId()+" )");
         return employee;
     }
 
@@ -30,7 +33,8 @@ public class H2EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public List<Employee> findAll() {
-        return null;
+        List<Employee> employees = this.jdbcTemplate.query("select * from employee", (resultSet, i) -> new Employee(resultSet.getInt(1), null , null));
+        return employees;
     }
 
     @Override
