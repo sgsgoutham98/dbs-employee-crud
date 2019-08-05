@@ -41,6 +41,6 @@ public class InMemoryEmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public void deleteEmployee(long id) {
-
+        empList.removeIf(employee -> employee.getId() == id);
     }
 }
