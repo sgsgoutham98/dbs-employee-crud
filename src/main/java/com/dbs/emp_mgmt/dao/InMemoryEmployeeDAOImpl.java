@@ -15,6 +15,7 @@ public class InMemoryEmployeeDAOImpl implements EmployeeDAO {
     @Override
     public Employee save(Employee employee) {
         empList.add(employee);
+        System.out.println("Saved the employee in the in Memory list "+employee);
         return employee;
     }
 

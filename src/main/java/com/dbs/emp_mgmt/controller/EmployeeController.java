@@ -16,19 +16,20 @@ public class EmployeeController {
     public EmployeeController(EmployeeService employeeService){
         this.employeeService = employeeService;
     }
-    Employee saveEmployee(Employee employee){
+
+    public Employee saveEmployee(Employee employee){
         return this.employeeService.saveEmployee(employee);
     }
 
-    List<Employee> listAll(){
+    public List<Employee> listAll(){
         return this.employeeService.listAll();
     }
 
-    Employee findById(long empId){
+    public Employee findById(long empId){
         return this.employeeService.findById(empId);
     }
 
-    void deleteEmployee(long empId){
+    public void deleteEmployee(long empId){
         this.employeeService.deleteEmployee(empId);
     }
 }
