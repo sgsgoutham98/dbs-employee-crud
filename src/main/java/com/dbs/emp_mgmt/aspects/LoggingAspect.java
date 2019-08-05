@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 @Component
-@Aspect
+//@Aspect
 public class LoggingAspect {
 
     @Before("within(com.dbs.emp_mgmt.*.*)")

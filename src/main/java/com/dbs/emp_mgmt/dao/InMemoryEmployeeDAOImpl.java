@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+@Repository("inMemory")
 public class InMemoryEmployeeDAOImpl implements EmployeeDAO {
 
     private static final List<Employee> empList = new ArrayList<>();

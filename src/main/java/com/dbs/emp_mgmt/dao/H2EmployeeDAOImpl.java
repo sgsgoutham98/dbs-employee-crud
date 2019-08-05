@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository("h2Dao")
 public class H2EmployeeDAOImpl implements EmployeeDAO {
 
     private JdbcTemplate jdbcTemplate;
@@ -19,7 +19,8 @@ public class H2EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public Employee save(Employee employee) {
-        return null;
+        this.jdbcTemplate.execute("insert into employee (id) values ('"+employee.getId()+" )");
+        return employee;
     }
 
     @Override
