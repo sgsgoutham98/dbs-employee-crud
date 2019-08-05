@@ -1,11 +1,13 @@
 package com.dbs.emp_mgmt.dao;
 
 import com.dbs.emp_mgmt.model.Employee;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class InMemoryEmployeeDAOImpl implements EmployeeDAO {
 
     private static final List<Employee> empList = new ArrayList<>();
@@ -39,6 +41,6 @@ public class InMemoryEmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public void deleteEmployee(long id) {
-       
+
     }
 }
