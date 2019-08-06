@@ -11,7 +11,7 @@ import java.util.List;
 @Repository("hibernateDAO")
 public class HibernateDAOImpl implements EmployeeDAO {
 
-    @Autowired(required = false)
+    @Autowired
     private SessionFactory sessionFactory;
 
     @Override
@@ -23,7 +23,15 @@ public class HibernateDAOImpl implements EmployeeDAO {
 
     @Override
     public Employee update(long empId, Employee employee) {
-        return null;
+        Session currentSession = sessionFactory.getCurrentSession();
+        Employee returnedEmployee = currentSession.byId(Employee.class).load(empId);
+        if(returnedEmployee != null){
+            returnedEmployee.setName(employee.getName());
+            returnedEmployee.setDateOfBirth(employee.getDateOfBirth());
+            returnedEmployee.setDepartmentName(employee.getDepartmentName());
+            currentSession.saveOrUpdate(returnedEmployee);
+        }
+        return employee;
     }
 
     @Override

@@ -13,7 +13,7 @@ public class EmpManagementClient {
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
         employeeController = applicationContext.getBean(EmployeeController.class);
-       // saveEmployees();
+        saveEmployees();
         listAllEmployees();
        // fetchEmployeeDetailsById(12);
     }
