@@ -11,7 +11,7 @@ import java.util.List;
 @Repository("hibernateDAO")
 public class HibernateDAOImpl implements EmployeeDAO {
 
-    @Autowired
+    @Autowired(required = false)
     private SessionFactory sessionFactory;
 
     @Override

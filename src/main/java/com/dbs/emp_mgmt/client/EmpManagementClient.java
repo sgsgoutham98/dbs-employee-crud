@@ -6,15 +6,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import java.time.LocalDate;
 
-public class EmpManangementClient {
+public class EmpManagementClient {
 
     private static  EmployeeController employeeController;
 
     public static void main(String[] args) {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml");
         employeeController = applicationContext.getBean(EmployeeController.class);
-        saveEmployees();
-        //listAllEmployees();
+       // saveEmployees();
+        listAllEmployees();
        // fetchEmployeeDetailsById(12);
     }
 

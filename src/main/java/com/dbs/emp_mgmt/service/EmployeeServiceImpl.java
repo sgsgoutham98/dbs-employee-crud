@@ -15,7 +15,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     private EmployeeDAO employeeDAO;
 
     @Autowired
-    public EmployeeServiceImpl(@Qualifier("hibernateDAO") EmployeeDAO employeeDAO){
+    public EmployeeServiceImpl(@Qualifier("h2Dao") EmployeeDAO employeeDAO){
         this.employeeDAO = employeeDAO;
     }
 
