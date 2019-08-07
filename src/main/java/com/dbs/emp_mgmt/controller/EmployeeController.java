@@ -22,7 +22,8 @@ public class EmployeeController {
     }
 
     public List<Employee> listAll(){
-        return this.employeeService.listAll();
+//        return this.employeeService.listAll();
+    	return null;
     }
 
     public Employee findById(long empId){
